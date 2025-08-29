@@ -1,0 +1,24 @@
+{% extends 'base_client.html' %}
+
+{% block title %}Тренеры{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="h2class">Наши тренеры</h2>
+
+    <div class="row">
+        {% for emp in employees %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm">
+                <img src="{{ url_for('static', filename=emp[6]) }}" class="card-img-top" alt="Фото тренера">
+                <div class="card-body">
+                    <strong>{{ emp[1] }}</strong>
+                    <p>{{ emp[3] }}</p>
+                    <p class="card-text" style="text-align: justify;">{{ emp[7] }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

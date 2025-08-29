@@ -1,0 +1,58 @@
+{% extends 'base_client.html' %}
+
+{% block title %}Расписание{% endblock %}
+
+{% block content %}
+<h2 class="h2class">Расписание занятий</h2>
+
+<form method="GET" class="mb-4">
+    <div class="row g-2 align-items-center">
+        <div class="col-auto">
+            <label for="day_filter" class="col-form-label">Фильтр по дню недели:</label>
+        </div>
+        <div class="col-auto">
+            <select name="day" id="day_filter" class="form-select">
+                <option value="">Все дни</option>
+                <option value="Пн" {% if selected_day == 'Пн' %}selected{% endif %}>Понедельник</option>
+                <option value="Вт" {% if selected_day == 'Вт' %}selected{% endif %}>Вторник</option>
+                <option value="Ср" {% if selected_day == 'Ср' %}selected{% endif %}>Среда</option>
+                <option value="Чт" {% if selected_day == 'Чт' %}selected{% endif %}>Четверг</option>
+                <option value="Пт" {% if selected_day == 'Пт' %}selected{% endif %}>Пятница</option>
+                <option value="Сб" {% if selected_day == 'Сб' %}selected{% endif %}>Суббота</option>
+                <option value="Вс" {% if selected_day == 'Вс' %}selected{% endif %}>Воскресенье</option>
+            </select>
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-success">Применить</button>
+        </div>
+    </div>
+</form>
+
+<div class="row">
+    {% for sch in schedule %}
+    <div class="col-md-6 mb-4">
+        <div class="card shadow-sm border-purple h-100">
+            <div class="card-body">
+                <h5 class="card-title">{{ sch[4] }}</h5>
+                <ul class="list-unstyled">
+                    <li><strong>День:</strong> {{ sch[1] }}</li>
+                    <li><strong>Время:</strong> {{ sch[2] }}</li>
+                    <li><strong>Длительность:</strong> {{ sch[3] }} мин</li>
+                    <li><strong>Тренер:</strong> {{ sch[5] }}</li>
+                    <li><strong>Свободных мест:</strong> {{ sch[6] }}</li>
+                </ul>
+
+                <form method="POST" class="d-flex justify-content-end mt-3">
+                    <input type="hidden" name="schedule_id" value="{{ sch[0] }}">
+                    <button class="btn btn-success"
+                            {% if sch[6] == 0 %} disabled {% endif %}>
+                        {% if sch[6] == 0 %}Мест нет{% else %}Записаться{% endif %}
+                    </button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

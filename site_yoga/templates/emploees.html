@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Цены{% endblock %}
+
+{% block content %}
+<h1>Тренеры</h1>
+
+<!-- НАДО БУДЕТ ПОМЕНЯТЬ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+
+<a href="{{ url_for('add_employee_route') }}" class="btn btn-success">Добавить тренера</a>
+<a href="{{ url_for('del_employee_route') }}" class="btn btn-success">Удалить тренера</a>
+
+<table>
+    <tr>
+        <th>ФИО</th>
+        <th>Специализация</th>
+        <th>Номер телефона</th>
+    </tr>
+</table>
+
+<div class="col-md-6 mb-4">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <ul class="list-group">
+                {% for employee in employees %}
+                    <li class="list-group-item">
+                        <strong>{{ employee[1] }}</strong> - {{ employee[3] }}
+                        <br>
+                        <small>Телефон: {{ employee[2] }} </small>
+                        <br>
+                        <small>Паспорт: {{ employee[4] }}</small>
+                        <br>
+                        <small>День Рождения: {{ employee[5] }}</small>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

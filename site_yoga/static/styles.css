@@ -1,0 +1,121 @@
+/* Общие стили */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Навигационное меню */
+nav {
+    background-color: #333;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    padding: 10px 15px;
+    transition: background 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #6a4194fd;
+    border-radius: 5px;
+}
+
+/* Контент */
+.content {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Медиа-запрос для адаптива */
+@media (max-width: 600px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin-bottom: 10px;
+    }
+}
+
+/* Кнопка Светлая  */
+.btn-success {
+    display: inline-block;
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    font-size: 16px;
+    background-color: transparent;
+    color: #6f42c1;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 0.3s;
+    border: 2px solid #6f42c1;
+}
+
+.btn-success:hover {
+    background-color: #e7d3ff;
+    border: 2px solid #6f42c1;
+    color: #6f42c1;
+}
+
+/* Кнопка Темная  */
+.button-purple {
+    background-color: #6f42c1;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.button-purple:hover {
+    background-color: #5936a2;
+    text-decoration: none;
+    color: white;
+}
+
+
+/* Изменяем заливку в полях ввода */
+.custom-input {
+    background-color: #f0f0f0; /* Цвет фона поля ввода */
+    border-color: #ccc; /* Цвет рамки */
+}
+
+/* Цвет для ссылки "Зарегистрироваться" */
+.text-custom-purple {
+    color: #6a0dad; /* Темно-фиолетовый цвет */
+}
+
+.h2class {
+    font-size: calc(1.325rem + .9vw);
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--bs-heading-color);
+
+}

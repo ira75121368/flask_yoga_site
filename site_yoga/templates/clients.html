@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Клиенты{% endblock %}
+
+{% block content %}
+    <h1>Клиенты</h1>
+
+    <!-- Кнопка для добавления клиента -->
+    <a href="{{ url_for('add_client_route') }}" class="btn btn-success">Добавить клиента</a>
+    <a href="{{ url_for('del_client_route') }}" class="btn btn-success">Удалить клиента</a>
+
+
+    <table>
+    <tr>
+        <th>Фамилия Имя Отчество</th>
+        <th>Номер телефона</th>
+    </tr>
+    <table>
+
+    <!-- Блок клиентов в виде списка -->
+    <div class="col-md-6 mb-4">
+        <ul class="list-group">
+            {% for client in clients %}
+                <li class="list-group-item">
+                    <strong>{{ client[1] }}</strong>
+                    <br>
+                    <small>Телефон: {{ client[2] }}</small>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

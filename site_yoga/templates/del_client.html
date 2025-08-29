@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="card shadow-sm p-4">
+    <h2 class="mb-4">Удалить клиента</h2>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+
+        <div class="mb-3">
+            <label for="full_name">ФИО клиента</label>
+            <input type="text" id="full_name" name="full_name" class="form-control" autocomplete="off">
+            <div id="suggestions" class="list-group position-absolute w-100"></div>
+        </div>
+
+        <div class="mb-3">
+            <label for="phone" class="form-label">{{ form.phone.label }}</label>
+            {{ form.phone(class="form-control", id="phone") }}
+        </div>
+
+        <button type="submit" class="btn btn-success">Удалить</button>
+    </form>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let fullNameInput = document.getElementById("full_name");
+        let phoneInput = document.getElementById("phone");
+        let suggestionsBox = document.getElementById("suggestions");
+
+        fullNameInput.addEventListener("input", function () {
+            let query = fullNameInput.value.trim();
+            if (query.length < 1) {
+                suggestionsBox.innerHTML = "";
+                return;
+            }
+
+            fetch(`/search_clients?q=${query}`)
+                .then(response => response.json())
+                .then(data => {
+                    suggestionsBox.innerHTML = "";
+                    data.forEach(client => {
+                        let item = document.createElement("div");
+                        item.classList.add("list-group-item", "list-group-item-action");
+                        item.textContent = client.full_name;
+                        item.dataset.phone = client.phone;
+                        item.addEventListener("click", function () {
+                            fullNameInput.value = client.full_name;
+                            phoneInput.value = client.phone;
+                            suggestionsBox.innerHTML = "";
+                        });
+                        suggestionsBox.appendChild(item);
+                    });
+                });
+        });
+
+        document.addEventListener("click", function (e) {
+            if (!suggestionsBox.contains(e.target) && e.target !== fullNameInput) {
+                suggestionsBox.innerHTML = "";
+            }
+        });
+    });
+</script>
+
+{% endblock %}

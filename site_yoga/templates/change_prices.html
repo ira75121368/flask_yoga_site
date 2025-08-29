@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card shadow-sm p-4">
+    <h2 class="mb-4">Изменить цену абонемента</h2>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+
+        <div class="mb-3">
+            <label for="membership_type">Выберите тип абонемента</label>
+            {{ form.membership_type(class="form-control", id="membership_type") }}
+        </div>
+
+        <div class="mb-3">
+            <label for="price">Введите новую цену</label>
+            {{ form.price(class="form-control", id="price") }}
+        </div>
+
+        <button type="submit" class="btn btn-success">Обновить</button>
+    </form>
+</div>
+{% endblock %}

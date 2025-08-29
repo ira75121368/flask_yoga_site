@@ -1,0 +1,63 @@
+{% extends 'base_client.html' %}
+
+{% block title %}О студии{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="text-center mb-4">
+        <h1 class="display-5 fw-bold">Студия Йоги "Баланс" - Легкое тело, легкий ум</h1>
+        <p class="lead text-muted">Откройте для себя йогу - да откроется вам просветление!</p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{{ url_for('static', filename='studio.jpg') }}" alt="Студия йоги" class="img-fluid rounded shadow">
+        </div>
+        <div class="col-md-6">
+            <p style="text-align: justify;">
+                Наша студия — это пространство уюта, покоя и внутреннего роста. Мы верим, что йога подходит каждому, независимо от возраста и подготовки. В нашей команде — опытные и чуткие инструкторы, которые с любовью проводят занятия по различным направлениям: от Хатха и Кундалини до восстановительных практик и йоги-нидры.
+            </p>
+            <p style="text-align: justify;">
+                У нас вы найдёте всё необходимое для комфортных занятий: просторные залы, тёплая атмосфера и индивидуальный подход. Мы поддержим вас на каждом шаге пути — от первого занятия до углублённой практики.
+            </p>
+            <p style="text-align: justify;">
+                Присоединяйтесь к нам и почувствуйте силу баланса!
+            </p>
+        </div>
+    </div>
+</div>
+<hr class="my-5">
+
+<div class="container py-5">
+  <div class="row align-items-start">
+    <div class="col-md-6 mb-4">
+      <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A139f1ce4b366b1a9bb2645b42973b9385e88e5bfb59fba47ef6f9f7cd94f9751&amp;source=constructor"
+              width="100%" height="400" style="border: none; border-radius: 16px;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+    <div class="col-md-6">
+      <h3 class="mb-4 fw-bold text-black">Мы ждём Вас:</h3>
+
+      <p><strong class="text-black">Адрес:</strong><br>Санкт-Петербург, Северный проспект, дом 6</p>
+      <p><strong class="text-black">Время работы:</strong><br>Пн–Вс: 07:00–22:00<br><small class="text-muted">Подробности у администратора</small></p>
+      <p><strong class="text-black">Телефон:</strong><br><a href="tel:+79194083430" class="text-dark">+7-911-393-33-25</a></p>
+      <p><strong class="text-black">Почта:</strong><br><a href="mailto:ira75121368@gmail.com" class="text-dark">ira75121368@gmail.com</a></p>
+
+
+      <p class="mt-3">
+        Записаться можно <span class="text-black fw-semibold">не позднее чем за 2 часа</span> до дневных занятий
+        и <span class="text-black fw-semibold">до 22:00</span> на утренние.
+      </p>
+
+      <div class="mt-4">
+        <a href="#" class="btn btn-outline-dark me-3">Получить консультацию</a>
+        <a href="#" class="btn btn-outline-dark me-3">Записаться на практику</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .text-purple { color: #6f42c1; }
+</style>
+
+{% endblock %}

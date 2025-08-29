@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="card shadow-sm p-4">
+        <h2 class="mb-4 text-center">Добавить абонемент</h2>
+        <form method="POST" class="needs-validation" novalidate>
+            {{ form.hidden_tag() }}
+
+            <div class="mb-3">
+                <label for="membership_type" class="form-label">{{ form.membership_type.label }}</label>
+                {{ form.membership_type(class="form-control", id="membership_type", placeholder="Введите тип абонемента", required="required") }}
+                <div class="invalid-feedback">Пожалуйста, укажите тип абонемента.</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="price" class="form-label">{{ form.price.label }}</label>
+                {{ form.price(class="form-control", id="price", placeholder="Введите цену", required="required") }}
+                <div class="invalid-feedback">Введите корректную цену.</div>
+            </div>
+                <button type="submit" class="btn btn-success">Добавить</button>
+        </form>
+    </div>
+
+    <script>
+        // Добавляем Bootstrap валидацию форм
+        (function () {
+            'use strict';
+            let forms = document.querySelectorAll('.needs-validation');
+            Array.prototype.slice.call(forms).forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        })();
+    </script>
+{% endblock %}

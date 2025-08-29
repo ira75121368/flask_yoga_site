@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}Йога студия{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="text-center mb-5">Информация о студии</h1>
+
+    <div class="row mt-5">
+        <!-- Блок тренеров -->
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-header">
+                    <h4>Тренеры</h4>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        {% for emploee in emploees %}
+                            <li class="list-group-item">
+                                <strong>{{ emploee[1] }}</strong> - {{ emploee[3] }}
+                                <br>
+                                <small>Телефон: {{ emploee[2] }}</small>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Блок цен -->
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-header">
+                    <h4>Цены</h4>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        {% for price in price_list %}
+                            <li class="list-group-item">
+                                <strong>{{ price[1] }}: </strong> {{ price[2] }} руб.
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Блок расписания -->
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-header">
+                    <h4>Расписание</h4>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        {% for session in schedule %}
+                            <li class="list-group-item">
+                                <strong>{{ session[1] }} {{ session[2] }}</strong>
+                                <br>
+                                <small>Направление: {{ session[4] }},   {{ session[3] }} мин.</small>
+                                <br>
+                                <small>Тренер: {{ session[5] }}</small>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

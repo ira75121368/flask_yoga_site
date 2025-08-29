@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Регистрация клиента{% endblock %}
+
+{% block content %}
+<div class="card shadow-sm p-4">
+    <h2>Регистрация клиента</h2>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+
+        <div class="mb-3">
+            <label for="full_name" class="form-label">ФИО</label>
+            {{ form.full_name(class="form-control", id="full_name", placeholder="Введите полное имя") }}
+        </div>
+
+        <div class="mb-3">
+            <label for="phone" class="form-label">Телефон</label>
+            {{ form.phone(class="form-control", id="phone", placeholder="+79111234567") }}
+        </div>
+
+        <div class="mb-3">
+            <label for="password" class="form-label">Пароль</label>
+            {{ form.password(class="form-control", id="password", placeholder="Введите пароль") }}
+        </div>
+
+        <div class="mb-3">
+            <label for="confirm_password" class="form-label">Повторите пароль</label>
+            {{ form.confirm_password(class="form-control", id="confirm_password", placeholder="Повторите пароль") }}
+        </div>
+
+        <button type="submit" class="btn btn-success">Зарегистрироваться</button>
+    </form>
+</div>
+{% endblock %}

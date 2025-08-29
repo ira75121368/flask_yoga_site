@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card shadow-sm p-4">
+    <h2 class="mb-4">Добавить тренера</h2>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <div class="mb-3">
+            <label for="full_name" class="form-label">{{ form.full_name.label }}</label>
+            {{ form.full_name(class="form-control", id="full_name", placeholder="Введите ФИО тренера", required="required") }}
+        </div>
+        <div class="mb-3">
+            <label for="phone" class="form-label">{{ form.phone.label }}</label>
+            {{ form.phone(class="form-control", id="phone", placeholder="Введите номер тренера", required="required") }}
+        </div>
+        <div class="mb-3">
+            <label for="specialization" class="form-label">{{ form.specialization.label }}</label>
+            {{ form.specialization(class="form-control", id="specialization", placeholder="Введите специальность", required="required") }}
+        </div>
+        <div class="mb-3">
+            <label for="passport" class="form-label">{{ form.passport.label }}</label>
+            {{ form.passport(class="form-control", id="passport", placeholder="Введите паспорт", required="required") }}
+        </div>
+        <div class="mb-3">
+            <label for="birthday" class="form-label">{{ form.birthday.label }}</label>
+            {{ form.birthday(class="form-control", id="birthday", placeholder="Введите день рождения 'YYYY-MM-DD'", required="required") }}
+        </div>
+        <button type="submit" class="btn btn-success">Добавить</button>
+    </form>
+</div>
+{% endblock %}

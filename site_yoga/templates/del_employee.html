@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="card shadow-sm p-4">
+    <h2 class="mb-4">Удалить тренера</h2>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+
+        <div class="mb-3">
+            <label for="full_name">ФИО тренера</label>
+            <input type="text" id="full_name" name="full_name" class="form-control" autocomplete="off">
+            <div id="suggestions" class="list-group position-absolute w-100"></div>
+        </div>
+
+        <div class="mb-3">
+            <label for="phone" class="form-label">Номер телефона</label>
+            {{ form.phone(class="form-control", id="phone") }}
+        </div>
+
+        <div class="mb-3">
+            <label for="specialization" class="form-label">Специализация</label>
+            {{ form.specialization(class="form-control", id="specialization") }}
+        </div>
+
+        <div class="mb-3">
+            <label for="passport" class="form-label">Номер паспорта</label>
+            {{ form.passport(class="form-control", id="passport") }}
+        </div>
+
+        <div class="mb-3">
+            <label for="birthday" class="form-label">День Рождения</label>
+            {{ form.birthday(class="form-control", id="birthday") }}
+        </div>
+
+        <button type="submit" class="btn btn-success">Удалить</button>
+    </form>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let fullNameInput = document.getElementById("full_name");
+        let phoneInput = document.getElementById("phone");
+        let specializationInput = document.getElementById("specialization");
+        let passportInput = document.getElementById("passport");
+        let birthdayInput = document.getElementById("birthday");
+        let suggestionsBox = document.getElementById("suggestions");
+
+        fullNameInput.addEventListener("input", function () {
+            let query = fullNameInput.value.trim();
+            if (query.length < 1) {
+                suggestionsBox.innerHTML = "";
+                return;
+            }
+
+            fetch(`/search_employees?q=${query}`)
+                .then(response => response.json())
+                .then(data => {
+                    suggestionsBox.innerHTML = "";
+                    data.forEach(employee => {
+                        let item = document.createElement("div");
+                        item.classList.add("list-group-item", "list-group-item-action");
+                        item.textContent = employee.full_name;
+                        item.dataset.phone = employee.phone;
+                        item.dataset.specialization = employee.specialization;
+                        item.dataset.phone = employee.passport;
+                        item.dataset.specialization = employee.birthday;
+                        item.addEventListener("click", function () {
+                            fullNameInput.value = employee.full_name;
+                            phoneInput.value = employee.phone;
+                            specializationInput.value = employee.specialization;
+                            passportInput.value = employee.passport;
+                            birthdayInput.value = employee.birthday;
+                            suggestionsBox.innerHTML = "";
+                        });
+                        suggestionsBox.appendChild(item);
+                    });
+                });
+        });
+
+        document.addEventListener("click", function (e) {
+            if (!suggestionsBox.contains(e.target) && e.target !== fullNameInput) {
+                suggestionsBox.innerHTML = "";
+            }
+        });
+    });
+</script>
+
+{% endblock %}

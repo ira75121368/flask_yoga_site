@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Расписание{% endblock %}
+
+{% block content %}
+<h1>Расписание занятий</h1>
+
+<h3>ВОЗМОЖНОСТЬ ДЕЛАТЬ ИЗМЕНЕНИЯ НЕ РЕАЛИЗОВАНА</h3>
+
+
+    <div class="col-md-6 mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <ul class="list-group">
+                            {% for sch in schedule %}
+                                <li class="list-group-item">
+                                    <strong>{{ sch[1] }} {{ sch[2] }}</strong>
+                                    <br>
+                                    <small>Направление: {{ sch[4] }},   {{ sch[3] }} мин.</small>
+                                    <br>
+                                    <small>Тренер: {{ sch[5] }}</small>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+{% endblock %}
