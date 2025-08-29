@@ -39,7 +39,7 @@ class EmployeeFormChanges(FlaskForm):
 
     def __init__(self, *args, **kwargs):
         super(EmployeeFormChanges, self).__init__(*args, **kwargs)
-        self.full_name.choices = self.get_employees()  # Заполняем выпадающий список
+        self.full_name.choices = self.get_employees()
 
     def get_employees(self):
         """Получаем список тренеров из базы данных"""
@@ -64,7 +64,7 @@ class ClientFormChanges(FlaskForm):
 
     def __init__(self, *args, **kwargs):
         super(ClientFormChanges, self).__init__(*args, **kwargs)
-        self.full_name.choices = self.get_clients()  # Заполняем выпадающий список
+        self.full_name.choices = self.get_clients()
 
     def get_clients(self):
         """Получаем список клиентов из базы данных"""
@@ -108,7 +108,7 @@ class ScheduleForm(FlaskForm):
 
     def __init__(self, *args, **kwargs):
         super(ScheduleForm, self).__init__(*args, **kwargs)
-        self.instructor_name.choices = self.get_instructors()  # Обновляем список тренеров
+        self.instructor_name.choices = self.get_instructors()
 
     def get_instructors(self):
         """Получаем список тренеров из базы данных"""

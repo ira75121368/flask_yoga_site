@@ -8,8 +8,8 @@ DB_CONFIG = {
     'dbname': 'postgres',
     'user': 'postgres',
     'password': 'postgres',
-    'host': 'localhost',  # или другой адрес сервера
-    'port': '5432',       # стандартный порт для PostgreSQL
+    'host': 'localhost',
+    'port': '5432',
 }
 
 def get_connection():
